@@ -14,7 +14,26 @@ import { NotImplementedError } from '../extensions/index.js';
  * ]) => 3`
  *
  */
-export default function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function countCats(matrix) {
+  // 1 method [65ms] 
+  // return matrix.flat().filter(x => x === '^^').length;
+
+  // 2 method [53ms]
+  // return matrix.reduce((total, row) => (total + row.reduce((line, cell) => line + (cell === '^^'), 0)), 0);
+
+  // 3 method [46ms]
+  // let total = 0;
+  // for (const row of matrix)
+  //   for (const cell of row)
+  //     total += cell === '^^';
+  // return total;
+
+  // 4 method [39ms]
+  let total = 0;
+  for (let i = 0, row, n = matrix.length; i < n; ++i) {
+    row = matrix[i];
+    for (let j = 0, m = row.length; j < m; ++j)
+      total += row[j] === '^^';
+  }
+  return total;
 }
