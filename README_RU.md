@@ -234,7 +234,10 @@ NB! Имя члена команды может содержать **пробе�
 Значение `separator` по умолчанию это `'+'`. Значение `additionSeparator` по умолчанию это `'|'`.
 
 Например: `repeater('STRING', { repeatTimes: 3, separator: '**', addition: 'PLUS', additionRepeatTimes: 3, additionSeparator: '00' })` => `'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'`
-
+```
+  STRING                **STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS
+        PLUS00PLUS00PLUS
+```
 Напишите свой код в `src/extended-repeater.js`.
 
 ---
