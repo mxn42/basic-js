@@ -23,7 +23,13 @@ import { NotImplementedError } from '../extensions/index.js';
  *  [1, 1, 1]
  * ]
  */
-export default function minesweeper (/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function minesweeper(matrix) {
+  const [height, width] = [matrix.length, matrix[0].length];
+  const board = [...Array(height)].map(() => Array(width).fill(0));
+  const neighbors = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]];
+  for (let y = 0; y < height; ++y)
+    for (let x = 0; x < width; ++x)
+      for (let [dx, dy] of neighbors)
+        board[y][x] += !!(matrix[y + dy] && matrix[y + dy][x + dx]);
+  return board;
 }
